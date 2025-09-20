@@ -1,20 +1,23 @@
 package org.cachescrubber.demo.jackson3;
 
-@tools.jackson.databind.annotation.JsonDeserialize(builder = DelombokedTestEntity.PlainTestEntityBuilderImpl.class)
-@com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = DelombokedTestEntity.PlainTestEntityBuilderImpl.class)
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = DelombokedTestEntity.DelombokedTestEntityBuilderImpl.class)
+@tools.jackson.databind.annotation.JsonDeserialize(builder = DelombokedTestEntity.DelombokedTestEntityBuilderImpl.class)
 public class DelombokedTestEntity {
 
+  @JsonProperty
   private final String id;
 
   private final String name;
 
-  protected DelombokedTestEntity(PlainTestEntityBuilder<?, ?> b) {
+  protected DelombokedTestEntity(DelombokedTestEntityBuilder<?, ?> b) {
     this.id = b.id;
     this.name = b.name;
   }
 
-  public static PlainTestEntityBuilder<?, ?> builder() {
-    return new PlainTestEntityBuilderImpl();
+  public static DelombokedTestEntityBuilder<?, ?> builder() {
+    return new DelombokedTestEntityBuilderImpl();
   }
 
   public String getId() {
@@ -59,23 +62,24 @@ public class DelombokedTestEntity {
   }
 
   public String toString() {
-    return "PlainTestEntity(id=" + this.getId() + ", name=" + this.getName() + ")";
+    return "DelombokedTestEntity(id=" + this.getId() + ", name=" + this.getName() + ")";
   }
 
-  public PlainTestEntityBuilder<?, ?> toBuilder() {
-    return new PlainTestEntityBuilderImpl().$fillValuesFrom(this);
+  public DelombokedTestEntityBuilder<?, ?> toBuilder() {
+    return new DelombokedTestEntityBuilderImpl().$fillValuesFrom(this);
   }
 
-  public static abstract class PlainTestEntityBuilder<C extends DelombokedTestEntity, B extends PlainTestEntityBuilder<C, B>> {
+  public static abstract class DelombokedTestEntityBuilder<C extends DelombokedTestEntity, B extends DelombokedTestEntityBuilder<C, B>> {
     private String id;
     private String name;
 
     private static void $fillValuesFromInstanceIntoBuilder(DelombokedTestEntity instance,
-        PlainTestEntityBuilder<?, ?> b) {
+                                                           DelombokedTestEntityBuilder<?, ?> b) {
       b.id(instance.id);
       b.name(instance.name);
     }
 
+    @JsonProperty
     public B id(String id) {
       this.id = id;
       return self();
@@ -87,7 +91,7 @@ public class DelombokedTestEntity {
     }
 
     protected B $fillValuesFrom(C instance) {
-      PlainTestEntityBuilder.$fillValuesFromInstanceIntoBuilder(instance, this);
+      DelombokedTestEntityBuilder.$fillValuesFromInstanceIntoBuilder(instance, this);
       return self();
     }
 
@@ -96,18 +100,18 @@ public class DelombokedTestEntity {
     public abstract C build();
 
     public String toString() {
-      return "PlainTestEntity.PlainTestEntityBuilder(id=" + this.id + ", name=" + this.name + ")";
+      return "DelombokedTestEntity.DelombokedTestEntityBuilder(id=" + this.id + ", name=" + this.name + ")";
     }
   }
 
-  @tools.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
   @com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
-  static final class PlainTestEntityBuilderImpl
-      extends PlainTestEntityBuilder<DelombokedTestEntity, PlainTestEntityBuilderImpl> {
-    private PlainTestEntityBuilderImpl() {
+  @tools.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
+  static final class DelombokedTestEntityBuilderImpl
+      extends DelombokedTestEntityBuilder<DelombokedTestEntity, DelombokedTestEntityBuilderImpl> {
+    private DelombokedTestEntityBuilderImpl() {
     }
 
-    protected PlainTestEntityBuilderImpl self() {
+    protected DelombokedTestEntityBuilderImpl self() {
       return this;
     }
 
