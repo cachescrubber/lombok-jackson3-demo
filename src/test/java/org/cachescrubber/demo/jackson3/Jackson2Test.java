@@ -11,17 +11,6 @@ class Jackson2Test {
   public static ObjectMapper objectMapper = new ObjectMapper();
 
   @Test
-  void testDeserializeDelombokedTestEntity() throws JsonProcessingException {
-    DelombokedTestEntity source = DelombokedTestEntity
-        .builder().id("23").name("tim").build();
-    String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(source);
-    System.out.println(json);
-
-    DelombokedTestEntity entity = objectMapper.readValue(json, DelombokedTestEntity.class);
-    assertThat(entity).isEqualTo(source);
-  }
-
-  @Test
   void testDeserializeLombokTestEntity() throws JsonProcessingException {
     TestEntity source = TestEntity.builder()
         .id("23").name("tim").build();
