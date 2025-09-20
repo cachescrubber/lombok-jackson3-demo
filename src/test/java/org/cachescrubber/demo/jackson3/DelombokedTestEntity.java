@@ -1,7 +1,7 @@
 package org.cachescrubber.demo.jackson3;
 
 @tools.jackson.databind.annotation.JsonDeserialize(builder = DelombokedTestEntity.PlainTestEntityBuilderImpl.class)
-//@com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = DelombokedTestEntity.PlainTestEntityBuilderImpl.class)
+@com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = DelombokedTestEntity.PlainTestEntityBuilderImpl.class)
 public class DelombokedTestEntity {
 
   private final String id;
@@ -101,7 +101,7 @@ public class DelombokedTestEntity {
   }
 
   @tools.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
-//  @com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
+  @com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
   static final class PlainTestEntityBuilderImpl
       extends PlainTestEntityBuilder<DelombokedTestEntity, PlainTestEntityBuilderImpl> {
     private PlainTestEntityBuilderImpl() {
